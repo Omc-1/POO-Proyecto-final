@@ -1,7 +1,16 @@
-from cli import display
+from cli import display, clear_screen
 
-def iniciar_sistema() -> None:
-    display()
+def main():
+    try:
+        display()
+    except KeyboardInterrupt:
+        print("\n\n⚠️Interrupción detectada (Ctrl + C).")
+        exit_option = input(" ¿Desear salir? (y/n): ").lower() == 'y'
+        if exit_option:
+            clear_screen()
+            print("Exiting...")
+        else:
+            main()
 
 if __name__ == "__main__":
-    iniciar_sistema()
+                main()
